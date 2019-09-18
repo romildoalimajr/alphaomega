@@ -232,11 +232,11 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         DataSource dataSource = new DataSource();
         UsuarioDao dao = new UsuarioDao(dataSource);
         
-        String login = new String(txtLogin.getText().trim());
+        String login = new String(txtLogin1.getText().trim());
         
         if(dao.deletarUsuario(login)){
             JOptionPane.showMessageDialog(null, "Usuário Excluído com Sucesso!");
-            txtLogin.setText("");
+            txtLogin1.setText("");
         }else{
             JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
         }

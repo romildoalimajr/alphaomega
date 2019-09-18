@@ -5,6 +5,8 @@
  */
 package telas;
 
+import static java.awt.Frame.MAXIMIZED_BOTH;
+
 /**
  *
  * @author Romildo A. Lima Jr.
@@ -54,6 +56,11 @@ public class TelaInicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         javax.swing.GroupLayout telaInternaLayout = new javax.swing.GroupLayout(telaInterna);
         telaInterna.setLayout(telaInternaLayout);
@@ -69,6 +76,11 @@ public class TelaInicial extends javax.swing.JFrame {
         menuCadastro.setText("Cadastro");
 
         menuCadFisica.setText("Física");
+        menuCadFisica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadFisicaActionPerformed(evt);
+            }
+        });
         menuCadastro.add(menuCadFisica);
 
         menuCadJuridica.setText("Jurídica");
@@ -150,6 +162,18 @@ public class TelaInicial extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_menuCadUsuarioActionPerformed
+
+    private void menuCadFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadFisicaActionPerformed
+        // TODO add your handling code here:
+        TelaDevedor devedor = new TelaDevedor();
+        telaInterna.add(devedor);
+        devedor.setVisible(true);
+    }//GEN-LAST:event_menuCadFisicaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        this.setExtendedState(MAXIMIZED_BOTH);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

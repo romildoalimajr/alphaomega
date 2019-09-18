@@ -86,14 +86,16 @@ public class UsuarioDao {
         PreparedStatement pstm;
         
         try {
-            pstm = dataSource.getConnection().prepareStatement(sql+login);
+            pstm = dataSource.getConnection().prepareStatement(sql);
             pstm.setString(1,login);
             
-            int delete = pstm.executeUpdate();
+            int rowsDelete = pstm.executeUpdate();
             
-            if(delete!=0){
+            if(rowsDelete>0){
                 deletado = true;
                 pstm.close();
+            }else{
+                deletado = false;
             }
         } catch (SQLException ex){
             System.err.println("Erro na execução..." +ex);
